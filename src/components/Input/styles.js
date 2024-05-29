@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 10px;
   margin: 0.8rem 0;
+  width: 100%;
 
   > input {
     width: 100%;
