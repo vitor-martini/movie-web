@@ -5,6 +5,7 @@ export default {
     GRAY: "#999591",
     BACKGROUND_900: "#1C1B1E",
     BACKGROUND_800: "#262529",
-    BACKGROUND_700: "#282124",
+    BACKGROUND_700: "#312E38",
+    BACKGROUND_600: "#282124",
   }
 };
