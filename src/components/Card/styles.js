@@ -12,7 +12,7 @@ export const Container = styled.div`
   }
 
   > p {
-    margin-bottom: 1.6rem;
+    margin: 1.6rem 0;
     color: ${({ theme }) => theme.COLORS.GRAY};
   }
 `;
