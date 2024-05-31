@@ -1,9 +1,9 @@
 import { Container, Section, Main, Content } from "./styles";
 import { Header } from "../../components/Header";
 import { Stars } from "../../components/Stars";
+import { BackButton } from "../../components/BackButton";
 import { Tag } from "../../components/Tag";
-import { Link } from "react-router-dom";
-import { FiArrowLeft, FiClock } from "react-icons/fi";
+import { FiClock } from "react-icons/fi";
 
 export function Details() {
 
@@ -17,10 +17,7 @@ export function Details() {
     <Container>
       <Header/>
       <Main>
-        <Link to="/">
-          <FiArrowLeft/>
-            Voltar
-        </Link>
+        <BackButton/>
         <Section>
           <h1>Interstellar</h1>
           <Stars rating={ 5 }></Stars>

@@ -1,16 +1,14 @@
 import { Container, Header, Form, ProfilePic } from "./styles";
-import { Link } from "react-router-dom";
-import { FiArrowLeft, FiCamera, FiUser, FiMail, FiLock } from "react-icons/fi";
+import { FiCamera, FiUser, FiMail, FiLock } from "react-icons/fi";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { BackButton } from "../../components/BackButton";
 
 export function Profile() {
   return (
     <Container>
       <Header>
-        <Link to="/">
-          <FiArrowLeft size={ 20 }></FiArrowLeft> Voltar
-        </Link>
+        <BackButton />
       </Header>
       <Form>
         <ProfilePic>

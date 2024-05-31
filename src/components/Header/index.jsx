@@ -6,7 +6,9 @@ export function Header() {
   return (
     <Container>
       <header>
-        <h1>Movie collection</h1>
+        <Link to="/">
+          <h1>Movie Collection</h1>
+        </Link>
         <Input
           label={"Pesquisar pelo título"}
           inputId={"pesquisar"} />

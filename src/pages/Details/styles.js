@@ -20,13 +20,6 @@ export const Main = styled.main`
   svg {
     color: ${({ theme }) => theme.COLORS.PINK}
   }
-
-  > a {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: ${({ theme }) => theme.COLORS.PINK };
-  }
 `;
 
 export const Content = styled.div`

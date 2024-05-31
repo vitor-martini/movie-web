@@ -9,17 +9,6 @@ export const Header = styled.header`
   height: 20%;
   display: flex;  
   padding-left: 10%;
-
-  > a {
-    color: ${({ theme }) => theme.COLORS.PINK};
-    display: flex;
-    align-items: center;
-
-    svg {
-      color: ${({ theme }) => theme.COLORS.PINK};
-      margin-right: 0.8rem;
-    }
-  }
 `;
 
 export const Form = styled.form`
