@@ -1,4 +1,5 @@
-import { Container, Main, Buttons, Form, Tags } from "./styles";
+import { Container, Buttons, Form, Tags } from "./styles";
+import { Main } from "../../components/Main";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";

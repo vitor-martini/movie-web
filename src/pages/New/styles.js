@@ -17,13 +17,13 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  width: 80%;
-  margin: 4.2rem auto;
-  padding: 0 3.2rem;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  gap: 0.8rem;
+  flex: 1; 
+  padding: 3.6rem 3.2rem;
+  width: 80%;
+  margin: 0 auto; 
+  overflow: hidden; 
 `;
 
 export const Form = styled.form`
@@ -33,6 +33,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  overflow-y: auto;
 
   > h1 {
     margin-bottom: 3.2rem;

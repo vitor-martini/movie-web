@@ -1,7 +1,8 @@
-import { Container, Page, InnerHeader, Content } from "./styles";
+import { Container, InnerHeader, Content } from "./styles";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { Card } from "../../components/Card";
+import { Main } from "../../components/Main";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,7 @@ export function Home() {
   return (
     <Container>
       <Header/>
-      <Page>
+      <Main>
         <InnerHeader>
           <h1>Meus filmes</h1>
           <Link to="/new">
@@ -87,7 +88,7 @@ export function Home() {
           }} />
         </Content>
 
-      </Page>
+      </Main>
     </Container>
   );
 }
