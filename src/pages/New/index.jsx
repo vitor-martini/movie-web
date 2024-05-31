@@ -20,8 +20,8 @@ export function New() {
     <Container>
       <Header/>
       <Main>
-        <BackButton/>
         <Form>
+          <BackButton/> 
           <h1>Novo filme</h1>
           <Stars 
             rating={ 0 }
