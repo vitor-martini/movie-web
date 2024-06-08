@@ -3,8 +3,14 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { api } from "../../services/api";
 
 export function SignIn() {
+
+  function handleSignIn() {
+    console.log(api.defaults.baseURL);
+  }
+
   return (
     <Container>
       <Form>
@@ -25,7 +31,8 @@ export function SignIn() {
 
         <Button
           title="Entrar"
-          type="Submit"
+          type="button"
+          onClick={handleSignIn}
         />
 
         <Link to="/register"> Criar conta</Link>
