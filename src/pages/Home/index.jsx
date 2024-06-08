@@ -5,19 +5,26 @@ import { Card } from "../../components/Card";
 import { Main } from "../../components/Main";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 export function Home() {
+  const { user } = useAuth(); 
+
   return (
     <Container>
       <Header/>
       <Main>
         <InnerHeader>
           <h1>Meus filmes</h1>
-          <Link to="/new">
-            <Button
-              icon={ FiPlus }
-              title={"Adicionar filme "} />
-          </Link>
+          {
+            user.admin ? (
+              <Link to="/new">
+                <Button
+                  icon={FiPlus}
+                  title={"Adicionar filme "} />
+              </Link>
+            ) : null
+          }
         </InnerHeader>
         <Content>
           <Card data={{
