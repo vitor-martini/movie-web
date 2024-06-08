@@ -15,18 +15,13 @@ export function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   function validateFields() {
-    if (!name) {
-      alert("Informe seu nome!");
+    if (!name || !email || !password || !confirmPassword) {
+      alert("Informe todos os campos!");
       return false;
     }
 
-    if (!email || !email.includes("@")) {
-      alert("Informe seu e-mail!");
-      return false;
-    }
-
-    if (!password || !confirmPassword) {
-      alert("Insira sua senha!");
+    if (!email.includes("@")) {
+      alert("E-mail inválido!");
       return false;
     }
 
