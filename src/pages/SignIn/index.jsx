@@ -3,12 +3,20 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { FiMail, FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { api } from "../../services/api";
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 
 export function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn } = useAuth();
 
-  function handleSignIn() {
-    console.log(api.defaults.baseURL);
+  async function handleSignIn() {
+    if(!email || !password) {
+      alert("Informe todos os campos!");
+      return;
+    }
+    await signIn({ email, password });
   }
 
   return (
@@ -21,12 +29,16 @@ export function SignIn() {
         <Input 
           icon={ FiMail }
           label={ "E-mail" }
-          inputId={ "email" }/>
+          inputId={ "email" }
+          onChange={e => setEmail(e.target.value)}
+        />
 
         <Input
           icon={ FiLock }
+          type="password"
           label={ "Senha" }
           inputId={ "senha" }
+          onChange={e => setPassword(e.target.value)}
         />
 
         <Button
