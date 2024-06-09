@@ -17,28 +17,42 @@ export function New() {
   const [cover, setCover] = useState("");
 
   async function handleAdd() {
-    if(!title || !description) {
+    if (!title || !description) {
       alert("Preencha todos os campos!");
       return;
     }
 
     try {
-      const response = await api.post("/movies", { title, description } );
+      const response = await api.post("/movies", { title, description });
+      const movieId = response.data.id;
+
       if (newCover) {
-        const fileUploadForm = new FormData();
-        fileUploadForm.append("cover", newCover);
-        await api.patch(`/movies/cover/${response.data.id}`, fileUploadForm);
+        await uploadCover(movieId, newCover);
       }
+
       setTitle("");
       setDescription("");
       setCover("");
+      setNewCover("");
       alert("Filme cadastrado com sucesso!");
-    } catch(error) {
-      if(error.response) {
+    } catch (error) {
+      if (error.response) {
         alert(error.response.data.message);
       } else {
         alert("Ocorreu um erro ao cadastrar o filme.");
       }
+    }
+  }
+
+  async function uploadCover(movieId, cover) {
+    const fileUploadForm = new FormData();
+    fileUploadForm.append("cover", cover);
+
+    try {
+      await api.patch(`/movies/cover/${movieId}`, fileUploadForm);
+    } catch (error) {
+      await api.delete(`/movies/${movieId}`);
+      throw error;
     }
   }
 
