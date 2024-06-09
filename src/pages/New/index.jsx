@@ -1,21 +1,14 @@
-import { Container, Buttons, Form, Tags } from "./styles";
+import { Container, Buttons, Form, Details, MovieCover, MovieInfo } from "./styles";
 import { Main } from "../../components/Main";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";
-import { Tag } from "../../components/Tag";
 import { Button } from "../../components/Button";
-import { Stars } from "../../components/Stars";
 import { BackButton } from "../../components/BackButton";
-import { FiPlus, FiX } from "react-icons/fi";
+import MovieCoverPlaceholder from "../../assets/movie-cover-placeholder.png";
+import { FiCamera } from "react-icons/fi";
 
 export function New() {
-  const tags = [
-    { id: 1, name: "Ação" },
-    { id: 2, name: "Aventura" },
-    { id: 3, name: "Drama" },
-  ];
-
   return (
     <Container>
       <Header/>
@@ -23,28 +16,25 @@ export function New() {
         <Form>
           <BackButton/> 
           <h1>Novo filme</h1>
-          <Stars 
-            rating={ 0 }
-            interactive={true}/>
-          <Input
-            label={"Título"}
-            inputId={"titulo"}
-          />
-          <TextArea
-            label={"Observações"}
-            inputId={"observacoes"}
-          />
-          <h2>Marcadores</h2>
-          <Tags>
-            {
-              tags.map(tag => <Tag key={tag.id} name={tag.name} icon={ FiX }/>)
-            }
-            <Tag 
-              name={"Novo marcador"} 
-              icon={ FiPlus } 
-              isNew={ true }
-            />
-          </Tags>
+          <Details>
+            <MovieCover>
+              <img src={MovieCoverPlaceholder} alt="Capa do filme" />
+              <label htmlFor="profilePic">
+                <FiCamera size={20} />
+                <input type="file" id="profilePic" />
+              </label>
+            </MovieCover>
+            <MovieInfo>
+              <Input
+                label={"Título"}
+                inputId={"titulo"}
+              />
+              <TextArea
+                label={"Descrição"}
+                inputId={"descricao"}
+              />
+            </MovieInfo>
+          </Details>
           <Buttons>
             <Button className="delete-movie" title={"Excluir filme"}/>
             <Button title={"Salvar"}/>

@@ -60,3 +60,50 @@ export const Buttons = styled.div`
     background-color: green;
   }
 `;
+
+export const Details = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 3.2rem;
+  height: 100%;
+`;
+
+export const MovieInfo = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MovieCover = styled.div`
+  width: 30.5rem;
+  height: 40rem;
+  position: relative;
+
+  > img {
+    border-radius: 1rem;
+    width: 30.5rem;
+    height: 40rem;
+  }
+
+  > label {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_1000};
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 7px;
+    right: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    svg {
+      color: ${({ theme }) => theme.COLORS.PINK}
+    }
+  }
+`;
