@@ -13,6 +13,8 @@ import { api } from "../../services/api";
 export function New() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [newCover, setNewCover] = useState("");
+  const [cover, setCover] = useState("");
 
   async function handleAdd() {
     if(!title || !description) {
@@ -21,9 +23,15 @@ export function New() {
     }
 
     try {
-      await api.post("/movies", { title, description } );
+      const response = await api.post("/movies", { title, description } );
+      if (newCover) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("cover", newCover);
+        await api.patch(`/movies/cover/${response.data.id}`, fileUploadForm);
+      }
       setTitle("");
       setDescription("");
+      setCover("");
       alert("Filme cadastrado com sucesso!");
     } catch(error) {
       if(error.response) {
@@ -32,6 +40,13 @@ export function New() {
         alert("Ocorreu um erro ao cadastrar o filme.");
       }
     }
+  }
+
+  async function handleCoverUpdate(event) {
+    const file = event.target.files[0];
+    setNewCover(file);
+    const newCoverPreview = URL.createObjectURL(file);
+    setCover(newCoverPreview);
   }
 
   return (
@@ -43,10 +58,14 @@ export function New() {
           <h1>Novo filme</h1>
           <Details>
             <MovieCover>
-              <img src={MovieCoverPlaceholder} alt="Capa do filme" />
-              <label htmlFor="profilePic">
+              <img src={cover ? cover : MovieCoverPlaceholder} alt="Capa do filme" />
+              <label htmlFor="cover">
                 <FiCamera size={20} />
-                <input type="file" id="profilePic" />
+                <input 
+                  type="file" 
+                  id="cover" 
+                  onChange={handleCoverUpdate}
+                />
               </label>
             </MovieCover>
             <MovieInfo>
