@@ -14,33 +14,36 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  width: 100%;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   display: flex;
-  align-items: flex-start;  
   gap: 1.6rem;
   padding: 1rem;
 
   > img {
-    width: 10rem;
-    height: auto; 
+    width: 15rem;
+    height: 20rem; 
   }
 `;
 
 export const TextContent = styled.div`
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; 
   
   > p {
+    margin: 0.8rem 0;
     text-align: justify;
   }
+`;
+
+export const MovieHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
 `;
 
 export const Buttons = styled.div`
   display: flex;
   flex-direction: column;  
+  justify-content: center;
   gap: 1.6rem;
 
   > button {
@@ -51,11 +54,4 @@ export const Buttons = styled.div`
       color: ${({ theme }) => theme.COLORS.PINK};
     }
   }
-`;
-
-export const MovieHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-  margin-bottom: 0.5rem; 
 `;
