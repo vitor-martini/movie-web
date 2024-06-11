@@ -12,7 +12,7 @@ export function MovieDropDown() {
   const { user } = useAuth();
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
+  const [showList, setShowList] = useState(false);
 
   useEffect(() => {
     async function fetchMovies() {
@@ -30,14 +30,14 @@ export function MovieDropDown() {
         inputId={"pesquisar"}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onFocus={() => setIsFocused(true)}
+        onFocus={() => setShowList(true)}
         onBlur={() => {
-          setTimeout(() => setIsFocused(false), 100);
+          setTimeout(() => setShowList(false), 100);
         }}
       />
 
       {
-        isFocused && movies.length > 0 &&
+        showList && movies.length > 0 &&
         (
           <List>
             {
@@ -52,7 +52,12 @@ export function MovieDropDown() {
                       <h2>{movie.title}</h2>
                       <Stars rating={movie.rating} />
                     </MovieHeader>
-                    <p>{movie.description}</p>
+                    <p>
+                      {
+                        movie.description.length > 600 ? 
+                          `${movie.description.substring(0, 600) }...` : 
+                          movie.description}
+                      </p>
                   </TextContent>
                   <Buttons>
                     <button type="button">
