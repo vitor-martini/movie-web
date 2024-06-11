@@ -17,13 +17,13 @@ export const Item = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   display: flex;
-  align-items: flex-start;  /* Alinha os itens no início do eixo vertical */
+  align-items: flex-start;  
   gap: 1.6rem;
   padding: 1rem;
 
   > img {
     width: 10rem;
-    height: auto; /* Garante que a altura da imagem seja ajustada automaticamente */
+    height: auto; 
   }
 `;
 
@@ -31,7 +31,7 @@ export const TextContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  /* Alinha o conteúdo no início */
+  justify-content: flex-start; 
   
   > p {
     text-align: justify;
@@ -40,7 +40,7 @@ export const TextContent = styled.div`
 
 export const Buttons = styled.div`
   display: flex;
-  flex-direction: column;  /* Coloca os botões em coluna */
+  flex-direction: column;  
   gap: 1.6rem;
 
   > button {
@@ -57,5 +57,5 @@ export const MovieHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 1.6rem;
-  margin-bottom: 0.5rem; /* Adiciona espaço abaixo do cabeçalho do filme */
+  margin-bottom: 0.5rem; 
 `;
