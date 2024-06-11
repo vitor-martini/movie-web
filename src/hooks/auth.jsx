@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect } from "react";
 import { api } from "../services/api";
 import { useState } from "react";
+import avatarPlaceholder from "../assets/avatar-placeholder.svg";
 
 export const AuthContext = createContext({});
 
@@ -11,6 +12,8 @@ function AuthProvider({ children }) {
     try {
       const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data;
+      user.avatar = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
       setUser(user);
       localStorage.setItem("@movies:token", token.toString());
       localStorage.setItem("@movies:user", JSON.stringify(user));

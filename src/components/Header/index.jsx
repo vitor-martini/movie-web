@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
 export function Header() {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   return (
     <Container>
@@ -17,7 +17,7 @@ export function Header() {
           inputId={"pesquisar"} />
         <Profile>
           <div>
-            <Link to="/profile"><p>Vitor Martini</p></Link>
+            <Link to="/profile"><p>{ user.name }</p></Link>
             <Link 
               onClick={signOut} 
               to="/">
@@ -25,7 +25,7 @@ export function Header() {
             </Link>
           </div>
           <Link to="/profile">
-            <img src="https://github.com/vitor-martini.png" alt="Foto de Vitor Martini" />
+            <img src={user.avatar} alt={`Foto de ${user.name}`} />
           </Link>
         </Profile>
       </header>
