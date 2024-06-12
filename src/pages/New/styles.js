@@ -5,11 +5,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  .new-tag {
-    background-color: transparent;
-    border: 1px dashed ${({ theme }) => theme.COLORS.GRAY };
-  }
-
   .delete-movie {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_1000 };
     color: ${({ theme }) => theme.COLORS.PINK };

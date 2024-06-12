@@ -6,9 +6,23 @@ import { Main } from "../../components/Main";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 export function Home() {
   const { user } = useAuth(); 
+  const [collection, setCollection] = useState([]);
+
+  async function fetchCollection() {
+    const response = await api.get("/collections");
+    setCollection(response.data);
+
+    console.log("entrou");
+  }
+
+  useEffect(() => {
+    fetchCollection();
+  }, []);
 
   return (
     <Container>
@@ -27,72 +41,23 @@ export function Home() {
           }
         </InnerHeader>
         <Content>
-          <Card data={{
-            title: "Filme 1",
-            rating: 5,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-              { id: 2, name: "Aventura" },
-            ]
-          }} />
 
-          <Card data={{
-            title: "Filme 2",
-            rating: 4.5,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-            ]
-          }} />
-
-
-          <Card data={{
-            title: "Filme 3",
-            rating: 3,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-            ]
-          }} />
-
-
-          <Card data={{
-            title: "Filme 4",
-            rating: 2,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-            ]
-          }} />
-
-
-          <Card data={{
-            title: "Filme 5",
-            rating: 1,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-            ]
-          }} />
-
-          <Card data={{
-            title: "Filme 6",
-            rating: 0.5,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-            ]
-          }} />
-
-          <Card data={{
-            title: "Filme 7",
-            rating: 0,
-            description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum natus commodi est mollitia libero placeat, enim itaque vitae recusandae, officia ullam minus quidem culpa corporis quaerat nulla iusto dolor delectus.",
-            tags: [
-              { id: 1, name: "Ação" },
-            ]
-          }} />
+          {
+            collection.length > 0 && 
+            collection.map(movie => (
+              <Card
+                fetchCollection={fetchCollection}
+                key={movie.id} 
+                data={{
+                  id: movie.id,
+                  title: movie.title,
+                  rating: movie.rating,
+                  description: movie.description,
+                  tags: movie.tags
+                }} />
+            ))
+          }
+          
         </Content>
 
       </Main>

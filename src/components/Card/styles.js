@@ -15,6 +15,11 @@ export const Container = styled.div`
     margin: 1.6rem 0;
     color: ${({ theme }) => theme.COLORS.GRAY};
   }
+
+  .new-tag {
+    background-color: transparent;
+    border: 1px dashed ${({ theme }) => theme.COLORS.GRAY };
+  }
 `;
 
 export const Tags = styled.div`
