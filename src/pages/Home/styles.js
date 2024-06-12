@@ -27,6 +27,20 @@ export const InnerHeader = styled.div`
   }
 `;
 
+export const Filter = styled.div`
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem; 
+`;
+
+export const Tag = styled.div`
+  padding: 1.6rem;
+  border-radius: 1rem;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+  border: 1px solid ${({ theme, selected }) => selected ? theme.COLORS.PINK : theme.COLORS.BACKGROUND_800};
+  cursor: pointer;
+`;
+
 export const Content = styled.div`
   flex: 1; 
   display: flex;
