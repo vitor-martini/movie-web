@@ -49,6 +49,8 @@ export const Buttons = styled.div`
   > button {
     background-color: transparent;
     height: 3rem;
+    border: none;
+    outline: none;
 
     svg {
       color: ${({ theme }) => theme.COLORS.PINK};
