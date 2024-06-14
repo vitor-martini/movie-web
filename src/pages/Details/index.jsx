@@ -6,11 +6,13 @@ import { FiClock } from "react-icons/fi";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
+import avatarPlaceholder from "../../assets/avatar-placeholder.svg";
 
 export function Details() {
   const navigate = useNavigate();
   const params = useParams();
   const [movie, setMovie] = useState({});
+  const avatar = movie.avatar ? `${api.defaults.baseURL}/files/${movie.avatar}` : avatarPlaceholder;
 
   useEffect(() => {
     async function fetchMovie() {
@@ -23,7 +25,7 @@ export function Details() {
     }
 
     fetchMovie();
-  }, []);
+  }, [params.id]);
 
   return (
     <Container>
@@ -35,17 +37,16 @@ export function Details() {
           <Stars rating={movie.rating} interactive={false}/>
         </Section>
         <Section>
-          <img src=" https://github.com/vitor-martini.png" alt="Foto de Vitor Martini" />
-          <p>Por Vitor Martini</p>
+          <img src={avatar} alt={`Foto de ${movie.created_by}`} />
+          <p>Por {movie.created_by}</p>
           <FiClock/>
-          <p>23/05/22 às 08:00</p>
+          <p>{movie.updated_at}</p>
         </Section>
         <Section>
         </Section>
         <Content>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus  ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt impedit veniam consequuntur consectetur, iusto ducimus fuga repellat sunt.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, magni, dolorum delectus non reprehenderit debitis minima ea soluta incidunt omnis nesciunt 
+            {movie.description}
           </p>
         </Content>
       </Main>
