@@ -3,7 +3,7 @@ import { Stars } from "../Stars";
 import { Tag } from "../Tag";
 import { IoMdAddCircleOutline, IoIosRemoveCircleOutline } from "react-icons/io";
 
-export function Card({ data, fetchCollection }) {
+export function Card({ data }) {
   return (
     <Container>
       <h1>{data.title}</h1>
@@ -13,7 +13,6 @@ export function Card({ data, fetchCollection }) {
         {
           data.tags.map(tag => (
             <Tag
-              fetchCollection={fetchCollection}
               key={tag.id}
               data={{
                 id: tag.id,
@@ -26,7 +25,6 @@ export function Card({ data, fetchCollection }) {
         }
 
         <Tag
-          fetchCollection={fetchCollection}
           data = {{
             name:"Novo",
             icon: IoMdAddCircleOutline,

@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
-import { useState } from "react";
 import avatarPlaceholder from "../assets/avatar-placeholder.svg";
 
 export const AuthContext = createContext({});

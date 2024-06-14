@@ -21,6 +21,8 @@ export const Container = styled.div`
     background-color: transparent;
     display: flex;
     align-items: center;
+    outline: none;
+    border: none;
   }
 
   input {

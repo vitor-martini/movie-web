@@ -1,8 +1,10 @@
 import { api } from "../../services/api";
 import { Container } from "./styles";
 import { useState } from "react";
+import { useCollection } from "../../hooks/collection";
 
-export function Tag({ data, fetchCollection }) {
+export function Tag({ data }) {
+  const { collectionData } = useCollection();
   const [newTagName, setNewTagName] = useState("");
   const Icon = data.icon;
   
@@ -13,7 +15,7 @@ export function Tag({ data, fetchCollection }) {
       if (!newTagName) return;
       await api.post("/collections/addTag", { collection_id: data.collectionId, name: newTagName });
     }
-    await fetchCollection();
+    await collectionData.fetchCollection();
     setNewTagName("");
   }
 
@@ -28,7 +30,7 @@ export function Tag({ data, fetchCollection }) {
       {Icon && <button
                   type="button"
                   onClick={handleClick}
-                >
+                > 
                   <Icon size={20}/>
                 </button>} 
     </Container>

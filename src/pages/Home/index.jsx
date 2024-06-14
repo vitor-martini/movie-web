@@ -6,42 +6,19 @@ import { Main } from "../../components/Main";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useCollection } from "../../hooks/collection";
 
 export function Home() {
   const { user } = useAuth(); 
-  const [collection, setCollection] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
-
-  async function fetchCollection() {
-    const response = await api.get(`/collections?tags=${selectedTags.join(",")}`);
-    setCollection(response.data);
-
-    if (response.data.length === 0) {
-      setSelectedTags([]);
-    }
-    
-    await fetchTags();
-  }
-
-  async function fetchTags() {
-    const response = await api.get("/collections/tags");
-    setTags(response.data);
-  }
+  const { collectionData } = useCollection();
 
   async function handleSelectedTag(tagName) {
-    if(selectedTags.includes(tagName)) {
-      setSelectedTags(selectedTags.filter(tag => tag !== tagName));
+    if(collectionData.selectedTags.includes(tagName)) {
+      collectionData.setSelectedTags(collectionData.selectedTags.filter(tag => tag !== tagName));
     } else {
-      setSelectedTags([...selectedTags, tagName]);
+      collectionData.setSelectedTags([...collectionData.selectedTags, tagName]);
     }
   }
-
-  useEffect(() => {
-    fetchCollection();
-  }, [selectedTags]);
 
   return (
     <Container>
@@ -61,11 +38,11 @@ export function Home() {
         </InnerHeader>
         <Filter>
           {
-            tags.length > 0 &&
-            tags.map((tag, index) => (
+            collectionData.tags.length > 0 &&
+            collectionData.tags.map((tag, index) => (
               <Tag 
                 key={index}
-                selected={selectedTags.includes(tag.name)}
+                selected={collectionData.selectedTags.includes(tag.name)}
                 onClick={() => handleSelectedTag(tag.name)}
               >
                 {tag.name}
@@ -76,10 +53,9 @@ export function Home() {
         <Content>
 
           {
-            collection.length > 0 && 
-            collection.map(movie => (
+            collectionData.collection.length > 0 && 
+            collectionData.collection.map(movie => (
               <Card
-                fetchCollection={fetchCollection}
                 key={movie.id} 
                 data={{
                   id: movie.id,
