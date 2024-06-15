@@ -55,5 +55,9 @@ export const Buttons = styled.div`
     svg {
       color: ${({ theme }) => theme.COLORS.PINK};
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 `;
