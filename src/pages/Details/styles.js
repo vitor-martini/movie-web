@@ -28,7 +28,8 @@ export const Content = styled.div`
   > p {
     text-align: justify;
     overflow-y: auto;
-    padding-right: 0.8rem;
+    padding-right: 0.8rem; 
+    word-break: break-all; 
   }
 `;
 

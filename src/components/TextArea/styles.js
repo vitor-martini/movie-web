@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   display: flex;
-  flex-direction: column;
   flex: 1;
   border-radius: 10px;
   margin: 0.8rem 0;
   width: 100%;
+  height: 100%;
 
   > textarea {
     width: 100%;

@@ -31,6 +31,7 @@ export const TextContent = styled.div`
   > p {
     margin: 0.8rem 0;
     text-align: justify;
+    word-break: break-all; 
   }
 `;
 

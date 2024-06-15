@@ -7,6 +7,7 @@ import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import { useCollection } from "../../hooks/collection";
+import { useEffect } from "react";
 
 export function Home() {
   const { user } = useAuth(); 
@@ -19,6 +20,14 @@ export function Home() {
       collectionData.setSelectedTags([...collectionData.selectedTags, tagName]);
     }
   }
+
+  useEffect(() => {
+    async function fetch() {
+      await collectionData.fetchCollection();
+    }
+
+    fetch();
+  }, []);
 
   return (
     <Container>
@@ -59,10 +68,12 @@ export function Home() {
                 key={movie.id} 
                 data={{
                   id: movie.id,
+                  movie_id: movie.movie_id,
                   title: movie.title,
                   rating: movie.rating,
                   description: movie.description,
-                  tags: movie.tags
+                  tags: movie.tags,
+                  cover: movie.cover
                 }} />
             ))
           }

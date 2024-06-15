@@ -102,7 +102,10 @@ export function MovieDropDown() {
                   </button>
                   
                   {user.admin && (
-                    <button type="button">
+                    <button 
+                      type="button"
+                      onClick={() => navigate(`/edit/${movie.id}`)}
+                    >
                       <MdEdit size={30} />
                     </button>
                   )}
