@@ -30,6 +30,7 @@ function AuthProvider({ children }) {
     setUser({});
     localStorage.removeItem("@movies:token");
     localStorage.removeItem("@movies:user");
+    api.defaults.headers.authorization = null;
   }
 
   useEffect(() => {
