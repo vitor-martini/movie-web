@@ -70,7 +70,6 @@ export function Home() {
                   id: movie.id,
                   movie_id: movie.movie_id,
                   title: movie.title,
-                  rating: movie.rating,
                   description: movie.description,
                   tags: movie.tags,
                   cover: movie.cover

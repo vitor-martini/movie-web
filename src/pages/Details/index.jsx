@@ -1,6 +1,5 @@
 import { Container, Section, Main, Content } from "./styles";
 import { Header } from "../../components/Header";
-import { Stars } from "../../components/Stars";
 import { BackButton } from "../../components/BackButton";
 import { FiClock } from "react-icons/fi";
 import { useParams, useNavigate } from "react-router-dom";
@@ -34,7 +33,6 @@ export function Details() {
         <BackButton/>
         <Section>
           <h1>{movie.title}</h1>
-          <Stars rating={movie.rating} interactive={false}/>
         </Section>
         <Section>
           <img src={avatar} alt={`Foto de ${movie.created_by}`} />

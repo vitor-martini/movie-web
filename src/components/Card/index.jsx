@@ -1,5 +1,4 @@
 import { Container, Tags, Content, Buttons } from "./styles";
-import { Stars } from "../Stars";
 import { Tag } from "../Tag";
 import { IoMdAddCircleOutline, IoIosRemoveCircleOutline } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
@@ -21,7 +20,6 @@ export function Card({ data }) {
       <img src={`${data.cover ? `${api.defaults.baseURL}/files/${data.cover}` : CoverPlaceholder}`} alt="Capa do filme" />
       <Content>
         <h1>{data.title}</h1>
-        <Stars rating={data.rating} />
         <p>{data.description.length > 300 ?
             `${data.description.substring(0, 300)}...` :
             data.description}</p>

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Container, List, Item, MovieHeader, TextContent, Buttons } from "./styles";
 import { api } from "../../services/api";
 import { Input } from "../Input";
-import { Stars } from "../Stars";
 import movieCoverPlaceHolder from "../../assets/movie-cover-placeholder.png";
 import { IoMdAddCircleOutline, IoIosRemoveCircleOutline } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
@@ -26,14 +25,15 @@ export function MovieDropDown() {
   }
 
   async function handleAdd(movieId) {
-    await api.post("/collections", { movie_id: movieId, rating: 0 });
+    await api.post("/collections", { movie_id: movieId });
     await collectionData.fetchCollection();
   }
 
   useEffect(() => {
     async function fetchMovies() {
       const response = await api.get(`/movies?title=${search}`);
-      setMovies(response.data);
+      const sortedMovies = response.data.sort((a, b) => a.title.localeCompare(b.title));
+      setMovies(sortedMovies);
     }
 
     fetchMovies();
@@ -79,7 +79,6 @@ export function MovieDropDown() {
                 <TextContent>
                   <MovieHeader>
                     <h2>{movie.title}</h2>
-                    <Stars rating={movie.rating} />
                   </MovieHeader>
                   <p>
                     {movie.description.length > 600 ?
