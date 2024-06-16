@@ -1,8 +1,38 @@
-# React + Vite
+# Movie Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend for the "movie-web" application, a platform designed for registering and categorizing movies by tags. The primary objective of this project is to practice and improve skills in React.
+## Features
+- Register new movies
+- Categorize movies by tags
+- View and manage your movie collection
+## Demonstration
 
-Currently, two official plugins are available:
+![Demonstration](./demo.gif) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React
+- Vite
+- JavaScript
+- HTML
+## Getting Started
+
+To get a local copy up and running, follow these steps:
+### Prerequisites
+- Node.js and npm installed
+### Installation 
+1. Clone the repo
+
+```sh
+git clone https://github.com/vitor-martini/movie-web.git
+``` 
+2. Install NPM packages
+
+```sh
+npm install
+``` 
+3. Start the development server
+
+```sh
+npm run dev
+```
+---
