@@ -11,7 +11,8 @@ function CollectionProvider({ children }) {
 
   async function fetchCollection() {
     const response = await api.get(`/collections?tags=${selectedTags.join(",")}`);
-    setCollection(response.data);
+    const sortedMovies = response.data.sort((a, b) => a.title.localeCompare(b.title));
+    setCollection(sortedMovies);
 
     if (response.data.length === 0) {
       setSelectedTags([]);

@@ -13,7 +13,6 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 2.4rem;
   overflow: hidden;
   padding: 0 3.2rem;
 
@@ -23,6 +22,7 @@ export const Main = styled.main`
 `;
 
 export const Content = styled.div`
+  margin-top: 1.6rem;
   overflow-y: auto;
 
   > p {
@@ -37,10 +37,28 @@ export const Section = styled.div`
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  width: 100%;
 
   > img {
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 50%;
+  }
+`;
+
+export const HeaderSection = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 1.6rem;
+  margin-bottom: 0.8rem;
+
+  > button {
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;
