@@ -10,13 +10,12 @@ function AuthProvider({ children }) {
   async function signIn({ email, password }) {
     try {
       const response = await api.post("/sessions", { email, password });
-      const { user, token } = response.data;
+
+      const { user } = response.data;
       user.avatar = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
       setUser(user);
-      localStorage.setItem("@movies:token", token.toString());
       localStorage.setItem("@movies:user", JSON.stringify(user));
-      api.defaults.headers.authorization = `Bearer ${token}`;
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
@@ -26,19 +25,15 @@ function AuthProvider({ children }) {
     }
   }
 
-  function signOut() {
+  async function signOut() {
     setUser({});
-    localStorage.removeItem("@movies:token");
+    await api.delete("/sessions");
     localStorage.removeItem("@movies:user");
-    api.defaults.headers.authorization = null;
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("@movies:token");
     const user = localStorage.getItem("@movies:user");
-
-    if (token && user) {
-      api.defaults.headers.authorization = `Bearer ${token}`;
+    if (user) {
       setUser(JSON.parse(user));
     }
   }, []);
