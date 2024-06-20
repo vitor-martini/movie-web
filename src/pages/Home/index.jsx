@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import { useCollection } from "../../hooks/collection";
 import { useEffect } from "react";
+import { ROLES } from "../../services/utils";
 
 export function Home() {
   const { user } = useAuth(); 
@@ -36,7 +37,7 @@ export function Home() {
         <InnerHeader>
           <h1>Meus filmes</h1>
           {
-            ["admin"].includes(user.role) ? (
+            [ROLES.ADMIN].includes(user.role) ? (
               <Link to="/new">
                 <Button
                   icon={FiPlus}

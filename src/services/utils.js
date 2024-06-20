@@ -7,3 +7,8 @@ export const formatDate = (date) => {
 
   return `${day}/${month}/${year}`;
 };
+
+export const ROLES = {
+  ADMIN: "admin",
+  USER: "user"
+};
