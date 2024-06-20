@@ -36,7 +36,7 @@ export function Home() {
         <InnerHeader>
           <h1>Meus filmes</h1>
           {
-            user.admin ? (
+            ["admin"].includes(user.role) ? (
               <Link to="/new">
                 <Button
                   icon={FiPlus}
